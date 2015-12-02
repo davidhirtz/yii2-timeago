@@ -30,13 +30,16 @@ Once the extension is installed, simply use it in your view like this:
 ```php
 <?php \davidhirtz\yii2\timeago\TimeagoAsset::register($this); ?>```
 
-You can disable the default locale behavior by configuring your asset manager like this:
+Additional options:
 
 ```php
 'assetManager'=>[
 	'bundles'=>[
 		'davidhirtz\yii2\timeago\TimeagoAsset'=>[
-			'locale'=>false,
+			// Load localized version based on Yii::$app->language. Default true.
+			//'locale'=>true,
+			// Use short locale version if available. Default false.
+            //'short'=>false,
 		],
 	],
 ],```

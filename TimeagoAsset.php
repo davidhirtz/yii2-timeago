@@ -42,9 +42,15 @@ class TimeagoAsset extends \yii\web\AssetBundle
 	];
 
 	/**
-	 * @var bool whether the locale should be included too
+	 * @var bool whether the locale should be loaded
 	 */
 	public $locale=true;
+
+	/**
+	 * @var bool whether the short locale version should be loaded. If
+	 * no short version was found, it falls back to the default locale.
+	 */
+	public $short=false;
 
 	/**
 	 * Adds timeago locale depending on app language if {locale} is true.
@@ -52,16 +58,21 @@ class TimeagoAsset extends \yii\web\AssetBundle
 	 */
 	public function init()
 	{
-		if($this->locale)
+		if($this->locale || $this->short)
 		{
-			if(strpos(Yii::$app->language, 'en')!==0 && !$this->setLocale(Yii::$app->language))
-			{
-				$language=str_replace('_', '-', strtolower(Yii::$app->language));
-				$language=substr($language, 0, strpos($language, '-'));
+			/**
+			 * Sanitize language.
+			 */
+			$language=str_replace('_', '-', strtolower(Yii::$app->language));
 
-				if($language)
+			if(($this->short || strpos($language, 'en')!==0) && !$this->setLocaleScript($language))
+			{
+				/**
+				 * Try short version.
+				 */
+				if($language=substr($language, 0, strpos($language, '-')))
 				{
-					$this->setLocale($language);
+					$this->setLocaleScript($language);
 				}
 			}
 		}
@@ -71,13 +82,19 @@ class TimeagoAsset extends \yii\web\AssetBundle
 
 	/**
 	 * @param string $language
+	 * @param bool $isShort
 	 * @return bool
 	 */
-	private function setLocale($language)
+	private function setLocaleScript($language, $isShort=false)
 	{
+		if($this->short && !$isShort && $this->setLocaleScript($language.'-short', true))
+		{
+			return true;
+		}
+
 		if(file_exists(Yii::getAlias($this->sourcePath).$this->getLocaleFilename($language)))
 		{
-			$this->js[]=$this->getLocaleFilename($language);
+			$this->js[]=trim($this->getLocaleFilename($language), DIRECTORY_SEPARATOR);
 			return true;
 		}
 
