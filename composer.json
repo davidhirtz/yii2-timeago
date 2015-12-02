@@ -1,6 +1,6 @@
 {
     "name": "davidhirtz/yii2-timeago",
-    "description": "Yii2 extension for jQuery plugin timeago which makes it easy to support automatically updating fuzzy timestamps (e.g. "4 minutes ago" or "about 1 day ago") from ISO 8601 formatted dates and times embedded in your HTML (à la microformats).",
+    "description": "Yii2 extension for jQuery plugin timeago which makes it easy to support automatically updating fuzzy timestamps (e.g. \"4 minutes ago\" or \"about 1 day ago\") from ISO 8601 formatted dates and times embedded in your HTML (à la microformats).",
     "type": "yii2-extension",
     "keywords": ["yii2"," extension"," timeago"," jquery"," time"," microtime"],
     "license": "MIT",
