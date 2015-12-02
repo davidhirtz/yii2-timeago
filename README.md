@@ -28,7 +28,7 @@ Usage
 Once the extension is installed, simply use it in your view like this:
 
 ```php
-<?php \davidhirtz\yii2\timeago\AssetBundle::register($this); ?>```
+<?php \davidhirtz\yii2\timeago\TimeagoAsset::register($this); ?>```
 
 You can disable the default locale behavior by configuring your asset manager like this:
 
