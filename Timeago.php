@@ -5,7 +5,6 @@
  * @link https://www.davidhirtz.com
  */
 namespace davidhirtz\yii2\timeago;
-
 use Yii;
 use yii\helpers\Html;
 

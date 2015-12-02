@@ -38,11 +38,39 @@ Additional options:
 	'bundles'=>[
 		'davidhirtz\yii2\timeago\TimeagoAsset'=>[
 			// Load localized version based on Yii::$app->language. Default true.
-			//'locale'=>true,
+			'locale'=>true,
 			// Use short locale version if available. Default false.
-            //'short'=>false,
-            // Plugin options
-            'options'=>['allowFuture'=>true],
+			'short'=>false,
+			// Plugin options, see plugin website for details. Default values below.
+			'settings'=>[
+				'refreshMillis'=>60000,
+				'allowPast'=>true,
+				'allowFuture'=>false,
+				'localeTitle'=>false,
+				'cutoff'=>0,
+				'autoDispose'=>true,
+				// Strings set here it will overwrite loaded locale config.
+				'strings'=>[
+					'prefixAgo'=>null,
+					'prefixFromNow'=>null,
+					'suffixAgo'=>"ago",
+					'suffixFromNow'=>"from now",
+					'inPast'=>'any moment now',
+					'seconds'=>"less than a minute",
+					'minute'=>"about a minute",
+					'minutes'=>"%d minutes",
+					'hour'=>"about an hour",
+					'hours'=>"about %d hours",
+					'day'=>"a day",
+					'days'=>"%d days",
+					'month'=>"about a month",
+					'months'=>"%d months",
+					'year'=>"about a year",
+					'years'=>"%d years",
+					'wordSeparator'=>" ",
+					'numbers'=>[],
+				],
+			],
 		],
 	],
 ],

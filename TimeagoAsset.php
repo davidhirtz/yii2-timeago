@@ -30,9 +30,9 @@ class TimeagoAsset extends \yii\web\AssetBundle
 
 	/**
 	 * @link http://timeago.yarp.com/
-	 * @var array additional plugin options.
+	 * @var array additional plugin settings.
 	 */
-	public $options=[];
+	public $settings=[];
 
 	/**
 	 * @inherit
@@ -72,6 +72,18 @@ class TimeagoAsset extends \yii\web\AssetBundle
 	 */
 	public function init()
 	{
+		/**
+		 * If strings are set in plugin settings, disable locale loading.
+		 */
+		if(isset($this->settings['strings']))
+		{
+			$this->locale=false;
+			$this->short=false;
+		}
+
+		/**
+		 * Add locale js to stack.
+		 */
 		if($this->locale || $this->short)
 		{
 			/**
@@ -114,14 +126,14 @@ class TimeagoAsset extends \yii\web\AssetBundle
 	 * Registers timeago javascript.
 	 *
 	 * @param \yii\web\View $view
-	 * @param array $options
+	 * @param array $settings
 	 */
-	public function registerJs($view, $options=[])
+	public function registerJs($view, $settings=[])
 	{
-		if($this->options || $options)
+		if($this->settings || $settings)
 		{
-			$options=Json::htmlEncode(array_merge($this->options, $options));
-			$view->registerJs("jQuery.extend(jQuery.timeago.settings, $options);", $view::POS_READY, 'timeagoOptions');
+			$settings=Json::htmlEncode(array_merge($this->settings, $settings));
+			$view->registerJs("jQuery.extend(jQuery.timeago.settings, $settings);", $view::POS_READY, 'timeagoOptions');
 		}
 
 		$view->registerJs("jQuery('time.timeago').timeago();", $view::POS_READY, 'timeago');
