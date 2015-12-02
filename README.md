@@ -41,6 +41,8 @@ Additional options:
 			//'locale'=>true,
 			// Use short locale version if available. Default false.
             //'short'=>false,
+            // Plugin options
+            'options'=>['allowFuture'=>true],
 		],
 	],
 ],

@@ -6,6 +6,7 @@
  */
 namespace davidhirtz\yii2\timeago;
 use Yii;
+use yii\helpers\Json;
 
 /**
  * Class TimeagoAsset.
@@ -15,6 +16,23 @@ class TimeagoAsset extends \yii\web\AssetBundle
 {
 	const LOCALE_DIR='/locales';
 	const LOCALE_FILENAME='jquery.timeago.{locale}.js';
+
+	/**
+	 * @var bool whether the locale should be loaded
+	 */
+	public $locale=true;
+
+	/**
+	 * @var bool whether the short locale version should be loaded. If
+	 * no short version was found, it falls back to the default locale.
+	 */
+	public $short=false;
+
+	/**
+	 * @link http://timeago.yarp.com/
+	 * @var array additional plugin options.
+	 */
+	public $options=[];
 
 	/**
 	 * @inherit
@@ -42,15 +60,11 @@ class TimeagoAsset extends \yii\web\AssetBundle
 	];
 
 	/**
-	 * @var bool whether the locale should be loaded
+	 * @inherit
 	 */
-	public $locale=true;
-
-	/**
-	 * @var bool whether the short locale version should be loaded. If
-	 * no short version was found, it falls back to the default locale.
-	 */
-	public $short=false;
+	public $depends=[
+		'yii\web\JqueryAsset'
+	];
 
 	/**
 	 * Adds timeago locale depending on app language if {locale} is true.
@@ -78,6 +92,39 @@ class TimeagoAsset extends \yii\web\AssetBundle
 		}
 
 		parent::init();
+	}
+
+	/**
+	 * @inheritdoc
+	 * @param \yii\web\View $view
+	 * @return TimeagoAsset
+	 */
+	public static function register($view)
+	{
+		/**
+		 * @var TimeagoAsset $bundle
+		 */
+		$bundle=parent::register($view);
+		$bundle->registerJs($view);
+
+		return $bundle;
+	}
+
+	/**
+	 * Registers timeago javascript.
+	 *
+	 * @param \yii\web\View $view
+	 * @param array $options
+	 */
+	public function registerJs($view, $options=[])
+	{
+		if($this->options || $options)
+		{
+			$options=Json::htmlEncode(array_merge($this->options, $options));
+			$view->registerJs("jQuery.extend(jQuery.timeago.settings, $options);", $view::POS_READY, 'timeagoOptions');
+		}
+
+		$view->registerJs("jQuery('time.timeago').timeago();", $view::POS_READY, 'timeago');
 	}
 
 	/**
