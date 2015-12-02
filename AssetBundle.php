@@ -29,6 +29,9 @@ class AssetBundle extends \yii\web\AssetBundle
 			'jquery.timeago.js',
 			'locales/*',
 		],
+		'except'=>[
+			'contrib',
+		],
 	];
 
 	/**
