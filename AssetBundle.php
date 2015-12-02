@@ -13,7 +13,7 @@ use Yii;
  */
 class AssetBundle extends \yii\web\AssetBundle
 {
-	const LOCALE_DIR='/locale';
+	const LOCALE_DIR='/locales';
 	const LOCALE_FILENAME='jquery.timeago.{locale}.js';
 
 	/**
