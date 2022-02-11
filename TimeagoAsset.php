@@ -8,15 +8,17 @@ namespace davidhirtz\yii2\timeago;
 
 use Yii;
 use yii\helpers\Json;
+use yii\web\AssetBundle;
+use yii\web\View;
 
 /**
- * Class TimeagoAsset.
+ * Class TimeagoAsset
  * @package davidhirtz\yii2\timeago
  */
-class TimeagoAsset extends \yii\web\AssetBundle
+class TimeagoAsset extends AssetBundle
 {
-    const LOCALE_DIR = '/locales';
-    const LOCALE_FILENAME = 'jquery.timeago.{locale}.js';
+    public const LOCALE_DIR = '/locales';
+    public const LOCALE_FILENAME = 'jquery.timeago.{locale}.js';
 
     /**
      * @var bool whether the locale should be loaded
@@ -98,12 +100,11 @@ class TimeagoAsset extends \yii\web\AssetBundle
 
     /**
      * @inheritdoc
-     * @param \yii\web\View $view
+     * @param View $view
      * @return TimeagoAsset
      */
     public static function register($view)
     {
-        /** @var TimeagoAsset $bundle */
         $bundle = parent::register($view);
         $bundle->registerJs($view);
 
@@ -113,7 +114,7 @@ class TimeagoAsset extends \yii\web\AssetBundle
     /**
      * Registers timeago javascript.
      *
-     * @param \yii\web\View $view
+     * @param View $view
      * @param array $settings
      */
     public function registerJs($view, $settings = [])

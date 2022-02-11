@@ -6,11 +6,12 @@
 
 namespace davidhirtz\yii2\timeago;
 
+use DateTime;
 use Yii;
 use yii\helpers\Html;
 
 /**
- * Class Timeago.
+ * Class Timeago
  * @package davidhirtz\yii2\timeago
  */
 class Timeago
@@ -21,13 +22,13 @@ class Timeago
     private static $isRegistered = false;
 
     /**
-     * Renders time tag.
+     * Renders time tag
      *
-     * @param int|string|\DateTime $time
+     * @param int|string|DateTime $time
      * @param array $options
      * @return string
      */
-    public static function tag($time, $options = [])
+    public static function tag($time, $options = []): string
     {
         if ($time) {
             if (!static::$isRegistered) {
@@ -40,5 +41,7 @@ class Timeago
 
             return Html::tag('time', Yii::$app->getFormatter()->asDatetime($time), $options);
         }
+
+        return '';
     }
 }
