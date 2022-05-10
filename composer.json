@@ -12,7 +12,7 @@
     ],
     "require": {
         "yiisoft/yii2": "*",
-		"bower-asset/jquery-timeago": ">=1.4.3"
+		"bower-asset/jquery-timeago": ">=1.6.7"
     },
     "autoload": {
         "psr-4": {

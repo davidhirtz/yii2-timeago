@@ -1,6 +1,8 @@
 Yii2 jQuery Timeago Plugin
 ==========================
-Yii2 extension for [jQuery](https://jquery.com) plugin [timeago](http://timeago.yarp.com) which makes it easy to support automatically updating fuzzy timestamps (e.g. "4 minutes ago" or "about 1 day ago") from ISO 8601 formatted dates and times embedded in your HTML (à la microformats).
+Yii2 extension for [jQuery](https://jquery.com) plugin [timeago](http://timeago.yarp.com) which makes it easy to support
+automatically updating fuzzy timestamps (e.g. "4 minutes ago" or "about 1 day ago") from ISO 8601 formatted dates and
+times embedded in your HTML (à la microformats).
 
 Installation
 ------------

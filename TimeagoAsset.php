@@ -12,8 +12,8 @@ use yii\web\AssetBundle;
 use yii\web\View;
 
 /**
- * Class TimeagoAsset
- * @package davidhirtz\yii2\timeago
+ * TimeagoAsset registers javascript assets related to the jQuery plugin Timeago.
+ * @link https://github.com/rmm5t/jquery-timeago
  */
 class TimeagoAsset extends AssetBundle
 {
@@ -26,8 +26,8 @@ class TimeagoAsset extends AssetBundle
     public $locale = true;
 
     /**
-     * @var bool whether the short locale version should be loaded. If
-     * no short version was found, it falls back to the default locale.
+     * @var bool whether the short locale version should be loaded. If no short version was found, it falls back to the
+     * default locale. Defaults to `false`.
      */
     public $short = false;
 
@@ -43,7 +43,7 @@ class TimeagoAsset extends AssetBundle
     public $sourcePath = '@bower/jquery-timeago';
 
     /**
-     * @inherit
+     * @var array
      */
     public $publishOptions = [
         'only' => [
@@ -56,39 +56,38 @@ class TimeagoAsset extends AssetBundle
     ];
 
     /**
-     * @inherit
+     * @var array
      */
     public $js = [
         'jquery.timeago.js',
     ];
 
     /**
-     * @inherit
+     * @var array
      */
     public $depends = [
         'yii\web\JqueryAsset'
     ];
 
     /**
-     * Adds timeago locale depending on app language if {locale} is true.
-     * If the app language is set to English this step is skipped.
+     * Adds timeago locale depending on app language if {locale} is true. If the app language is set to English this
+     * step is skipped.
      */
     public function init()
     {
-        // If strings are set in plugin settings, disable locale loading.
+        // If strings are set in plugin settings, disable locale loading
         if (isset($this->settings['strings'])) {
             $this->locale = false;
             $this->short = false;
         }
 
-        // Add locale js to stack.
+        // Add locale js to stack
         if ($this->locale || $this->short) {
-
-            //Sanitize language.
+            // Sanitize language
             $language = str_replace('_', '-', strtolower(Yii::$app->language));
 
+            // Try short version
             if (($this->short || strpos($language, 'en') !== 0) && !$this->setLocaleScript($language)) {
-                // Try short version.
                 if ($language = substr($language, 0, strpos($language, '-'))) {
                     $this->setLocaleScript($language);
                 }
@@ -99,7 +98,6 @@ class TimeagoAsset extends AssetBundle
     }
 
     /**
-     * @inheritdoc
      * @param View $view
      * @return TimeagoAsset
      */
@@ -139,7 +137,7 @@ class TimeagoAsset extends AssetBundle
         }
 
         if (file_exists(Yii::getAlias($this->sourcePath) . $this->getLocaleFilename($language))) {
-            $this->js[] = trim($this->getLocaleFilename($language), DIRECTORY_SEPARATOR);
+            $this->js[] = trim($this->getLocaleFilename($language), '/');
             return true;
         }
 
@@ -152,6 +150,6 @@ class TimeagoAsset extends AssetBundle
      */
     private function getLocaleFilename($language)
     {
-        return strtr(self::LOCALE_DIR . DIRECTORY_SEPARATOR . self::LOCALE_FILENAME, ['{locale}' => $language]);
+        return strtr(self::LOCALE_DIR . '/' . self::LOCALE_FILENAME, ['{locale}' => $language]);
     }
 }

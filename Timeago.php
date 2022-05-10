@@ -11,18 +11,18 @@ use Yii;
 use yii\helpers\Html;
 
 /**
- * Class Timeago
- * @package davidhirtz\yii2\timeago
+ * Timeago is a helper class which initializes {@see TimeagoAsset} once and renders the timeago HTML tag via
+ * {@see Timeago::tag()}.
  */
 class Timeago
 {
     /**
      * @var bool
      */
-    private static $isRegistered = false;
+    private static $_isRegistered = false;
 
     /**
-     * Renders time tag
+     * Renders time HTML tag.
      *
      * @param int|string|DateTime $time
      * @param array $options
@@ -31,9 +31,9 @@ class Timeago
     public static function tag($time, $options = []): string
     {
         if ($time) {
-            if (!static::$isRegistered) {
+            if (!static::$_isRegistered) {
                 TimeagoAsset::register(Yii::$app->getView());
-                self::$isRegistered = true;
+                static::$_isRegistered = true;
             }
 
             Html::addCssClass($options, 'timeago');
