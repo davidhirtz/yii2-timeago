@@ -1,28 +1,37 @@
 {
-    "name": "davidhirtz/yii2-timeago",
-    "description": "Yii2 extension for jQuery plugin timeago which makes it easy to support automatically updating fuzzy timestamps (e.g. \"4 minutes ago\" or \"about 1 day ago\") from ISO 8601 formatted dates and times embedded in your HTML (à la microformats).",
-    "type": "yii2-extension",
-    "keywords": ["yii2"," extension"," timeago"," jquery"," time"," microtime"],
-    "license": "MIT",
-    "authors": [
-        {
-            "name": "David Hirtz",
-            "email": "hello@davidhirtz.com"
-        }
-    ],
-    "require": {
-        "yiisoft/yii2": "*",
-		"bower-asset/jquery-timeago": ">=1.6.7"
-    },
-    "autoload": {
-        "psr-4": {
-            "davidhirtz\\yii2\\timeago\\": ""
-        }
-    },
-	"repositories": [
-		{
-			"type": "composer",
-			"url": "https://asset-packagist.org"
-		}
-	]
+  "name": "davidhirtz/yii2-timeago",
+  "description": "Displays relative timestamps (e.g. \"4 minutes ago\" or \"about 1 day ago\") via a custom web component.",
+  "keywords": [
+    "yii2",
+    "extension",
+    "timeago",
+    "time",
+    "microtime"
+  ],
+  "authors": [
+    {
+      "name": "David Hirtz",
+      "email": "hello@davidhirtz.com"
+    }
+  ],
+  "require": {
+    "npm-asset/x-timeago": "^1.0",
+    "yiisoft/yii2": "^2.0"
+  },
+  "autoload": {
+    "psr-4": {
+      "davidhirtz\\yii2\\timeago\\": "src/"
+    }
+  },
+  "config": {
+    "allow-plugins": {
+      "yiisoft/yii2-composer": true
+    }
+  },
+  "repositories": [
+    {
+      "type": "composer",
+      "url": "https://asset-packagist.org"
+    }
+  ]
 }
