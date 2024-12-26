@@ -15,7 +15,7 @@
     }
   ],
   "require": {
-    "npm-asset/x-timeago": "^1.0",
+    "npm-asset/x-timeago": "^1.1",
     "yiisoft/yii2": "^2.0"
   },
   "autoload": {

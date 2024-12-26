@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "d3c52299356faff7cab7f150624e4a55",
+    "content-hash": "0ebd8f14e98de6df91b6e10319c54bf9",
     "packages": [
         {
             "name": "bower-asset/inputmask",
@@ -208,10 +208,10 @@
         },
         {
             "name": "npm-asset/x-timeago",
-            "version": "1.0.0",
+            "version": "1.1.0",
             "dist": {
                 "type": "tar",
-                "url": "https://registry.npmjs.org/x-timeago/-/x-timeago-1.0.0.tgz"
+                "url": "https://registry.npmjs.org/x-timeago/-/x-timeago-1.1.0.tgz"
             },
             "type": "npm-asset"
         },

@@ -7,7 +7,7 @@ Installation
 ------------
 
 ```
-composer require davidhirtz/yii2-timeago "^2.0"
+composer require davidhirtz/yii2-timeago "^2.1"
 ```
 
 Usage
